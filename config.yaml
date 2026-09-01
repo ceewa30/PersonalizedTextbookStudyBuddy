@@ -1,0 +1,21 @@
+paths:
+  source_folder: "source"
+  pdf_filename: "Python_200_Essential_Concepts_for_Beginners.pdf"
+  chroma_db_dir: "data/chroma"
+
+models:
+  embedding: "text-embedding-3-small"
+  embedding_dimensions: 1536
+  llm: "gpt-4o-mini"
+  temperature: 0.2
+
+chunking:
+  chunk_size: 1000
+  chunk_overlap: 200
+
+vector_store:
+  collection_name: "python_textbook_collection"
+
+quiz_settings:
+  num_questions: 5
+  difficulty: "beginner to intermediate"

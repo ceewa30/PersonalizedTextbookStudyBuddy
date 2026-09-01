@@ -1,0 +1,10 @@
+langchain
+langchain-community
+langchain-openai
+langchain-core
+langchain-text-splitters
+langchain_chroma
+chromadb
+pypdf
+gradio
+pydantic
