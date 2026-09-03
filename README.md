@@ -75,7 +75,7 @@ An advanced, local web-based AI assistant built to process educational textbooks
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com
-cd local-ai-study-assistant
+cd PersonalizedTextbookStudyBuddy
 ```
 
 ### 2. Install Dependencies
