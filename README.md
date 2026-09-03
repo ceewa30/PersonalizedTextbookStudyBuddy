@@ -74,7 +74,7 @@ An advanced, local web-based AI assistant built to process educational textbooks
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com](https://github.com/ceewa30/PersonalizedTextbookStudyBuddy.git)
+git clone https://github.com/ceewa30/PersonalizedTextbookStudyBuddy.git
 cd PersonalizedTextbookStudyBuddy
 ```
 
