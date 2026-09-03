@@ -57,7 +57,7 @@ An advanced, local web-based AI assistant built to process educational textbooks
 
 ## 🛠️ Technical Stack
 
-* **Frontend Dashboard:** [Streamlit](https://streamlit.io) (Python-based interactive UI)
+* **Frontend Dashboard:** [Gradio](https://gradio.app/) (Python-based interactive UI)
 * **RAG Orchestration:** [LlamaIndex](https://llamaindex.ai) / [LangChain](https://langchain.com)
 * **Vector Storage:** [ChromaDB](https://trychroma.com) (Local persistent database)
 * **LLM Engines:** 
@@ -95,7 +95,7 @@ OLLAMA_BASE_URL=http://localhost:11434
 
 ### 4. Run the Application
 ```bash
-streamlit run app.py
+uv run gradio app.py
 ```
 
 ---
