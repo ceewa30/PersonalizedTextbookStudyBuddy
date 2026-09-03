@@ -1,90 +1,83 @@
-# 📄 AI Resume Question Generator
+🗺️ System Architecture Diagram
 
-An intelligent, production-ready developer tool that extracts text from a PDF resume and automatically leverages a Large Language Model (LLM) pipeline via **LangChain** to generate tailored, highly specific interview questions and ideal structural answers. 
+[ PHASE 1: DATA INGESTION PIPELINE ]
 
-Built using a modern **Gradio** web user interface for simple drag-and-drop operations.
+  📁 Upload Textbook (PDFs) 
+         │
+         ▼
+  ✂️ Text Splitting (Fixed-size overlap chunking)
+         │
+         ▼
+  🧠 Embedding Model (e.g., text-embedding-3-small)
+         │
+         ▼
+  🗄️ Local Vector Database (ChromaDB / FAISS)
 
----
+[ PHASE 2: RETRIEVAL & GENERATION PIPELINE ]
 
-## ✨ Features
+  🧑‍🎓 Student Input  ──► [ Action Type Selection: Quiz or Summary ]
+         │
+         ▼
+  🔍 Query Embedding  ──► [ Semantic Search in Vector DB ]
+                                │
+                                ▼
+                         📑 Top-K Relevant Text Chunks
+                                │
+                                ▼
+  🤖 LLM Generator (OpenAI / Llama 3 with customized prompt template)
+         │
+         ▼
+  📝 Final Output: Interactive Quiz (with answers) OR Structured Chapter Summary
 
-- **📂 PDF Text Extraction:** In-memory scanning and parsing of uploaded developer resumes using `PyPDF2`.
-- **⛓️ LangChain Orchestration:** Leverages modern LangChain Expression Language (LCEL) pipelines to interact with OpenAI's models asynchronously.
-- **🛡️ Guaranteed Schema Outputs:** Utilizes `Pydantic` mapping inside the LLM engine to force deterministic, type-safe JSON returns without formatting drops.
-- **🎨 Beautiful Gradio UI:** A streamlined, side-by-side interface for drag-and-drop file inputs and clean Markdown rendering outputs.
-- **💡 STAR Answer Formatting:** Every generated answer follows the **Situation, Task, Action, Result** standard used by top-tier tech companies.
 
----
 
-## 🛠️ Tech Stack
+  📋 Capstone Project Outline
+  
+  🎯 Project Objectives
+  
+  Build a local web-based AI assistant capable of processing standard educational textbooks and notes.
 
-- **Core Engine:** Python 3.10+
-- **LLM Pipeline:** LangChain Core, LangChain OpenAI SDK
-- **Data Validation:** Pydantic v2
-- **PDF Extraction:** PyPDF2
-- **Frontend UI:** Gradio
+  Eliminate general LLM hallucinations by strict contextual anchoring.
+  
+  Automate the generation of formatted study aids (multiple-choice quizzes, key concept flashcards, and chapter summaries).
+  
+  🗂️ Core Feature Requirements
+  
+  Document Ingestion Portal: A drag-and-drop dashboard for uploading large PDF textbooks.
+  
+  Smart Chunker: Preprocesses textual layouts, handling page boundaries and tables gracefully.
+  
+  Contextual Flashcard & Quiz Builder: A dynamic selector where students can request "Generate a 5-question quiz for Chapter 3".
+  
+  Source Attribution: Each generated summary or quiz must explicitly link to the exact page number or source chunk text it pulled from.
+  
+  🛠️ Technical Stack Recommendations
+  
+  Frontend Dashboard: Streamlit or Gradio (Python-based, zero-CSS frameworks).
+  
+  RAG Orchestration Framework: LangChain or LlamaIndex.
+  
+  Vector Storage: ChromaDB or local file-based FAISS.
+  
+  LLM Engine: gpt-4o-mini API for production quality, or Ollama running Llama 3 (8B) locally to prevent data privacy issues.
+  
+  📈 Phased Implementation Plan
+  
+  Phase             Focus               Core Deliverables
+  
+  Phase 1         Data Preprocessing    Set up PDF reader, configure RecursiveCharacterTextSplitter, 
+                                        test vector conversion.
+  
+  Phase 2         DB Storage &          Initialize local ChromaDB instance; construct 
+                  Retrieval             query system with similarity_search.
+  
+  Phase 3         Prompt Engineering    Write strict system prompts (e.g., "You are an AI teacher.
+                                        Only use the retrieved context. If unsure, say 'Not found in textbook'").
+  
+  Phase 4         Interactive UI        Build the Streamlit interface with 
+                  Development           distinct tabs for uploading, testing, and viewing metrics.
+  
+  Phase 5         Evaluation &          Run basic accuracy validation using Ragas 
+                  Fine-tuning           frameworks or manual sample testing.
 
----
-
-## 🚀 Getting Started
-
-### 1. Prerequisites
-
-Make sure you have an OpenAI API Key with access to the `gpt-4o-mini` or `gpt-4o` models.
-
-### 2. Installation
-
-Clone this repository and install the project dependencies:
-
-```bash
-# Clone the repository
-git clone https://github.com
-cd resume-qa-generator
-
-# Install dependencies
-pip install gradio pypdf2 langchain-openai pydantic
-```
-
-### 3. Set Up Environment Variables
-
-Provide your OpenAI API key to the terminal execution environment:
-
-```bash
-# Linux/macOS
-export OPENAI_API_KEY="your-actual-api-key-here"
-
-# Windows (Command Prompt)
-set OPENAI_API_KEY="your-actual-api-key-here"
-
-# Windows (PowerShell)
-$env:OPENAI_API_KEY="your-actual-api-key-here"
-```
-
-### 4. Running the Application
-
-Launch the local web server:
-
-```bash
-python app.py
-```
-
-Open your browser and navigate to the local link generated in the terminal output:
-```text
-http://127.0.0.1:7860
-```
-
----
-
-## 📂 Project Structure
-
-```text
-├── app.py              # Main application entry point containing UI & LangChain pipeline
-├── README.md           # Project documentation and setup guide
-└── requirements.txt    # Optional dependency tracking file
-```
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page or submit a pull request with enhancements like vector storage integrations (RAG) or multiple file uploads.
+  
